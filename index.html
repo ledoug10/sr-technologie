@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SR Technologie — Nous avons le secret de la réussite technologique</title>
+<meta name="description" content="SR Technologie : formations certifiantes en informatique, réseaux, fibre optique et génie électrique à Cotonou. Maintenance informatique, développement web, installation réseau au Bénin.">
+<meta name="keywords" content="formation informatique Cotonou, maintenance informatique Bénin, réseau wifi Cotonou, CCNA Bénin, fibre optique Bénin, développement web Bénin, SR Technologie">
+<meta name="author" content="SR Technologie">
+<meta property="og:title" content="SR Technologie — Formation & Solutions Informatiques à Cotonou">
+<meta property="og:description" content="Formations certifiantes, maintenance informatique, réseaux et développement web au Bénin. 92% de nos apprenants employés en 3 mois.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sr-technologie.vercel.app/">
+<meta property="og:image" content="images/PrésentationSR.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sr-technologie.vercel.app/">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1161,6 +1171,44 @@ footer {
   .apropos-stat-row { grid-template-columns:1fr 1fr; }
 }
 
+/* FAQ */
+.faq-item {
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+.faq-question {
+  width:100%;
+  text-align:left;
+  padding:18px 22px;
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  background:none;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  transition:color .2s;
+}
+.faq-question:hover { color:var(--blue); }
+.faq-arrow { font-size:12px; color:var(--muted); transition:transform .3s; flex-shrink:0; }
+.faq-question.open .faq-arrow { transform:rotate(180deg); }
+.faq-answer {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease, padding .3s;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+  padding:0 22px;
+}
+.faq-answer.open { max-height:200px; padding:0 22px 18px; }
+  
 /* Animations on scroll */
 .fade-up {
   opacity:0;
@@ -1190,6 +1238,7 @@ footer {
       <li><a href="#apropos">À propos</a></li>
       <li><a href="#formations">Formations</a></li>
       <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
@@ -1203,6 +1252,7 @@ footer {
   <a href="#apropos" onclick="toggleMenu()">À propos</a>
   <a href="#formations" onclick="toggleMenu()">Formations</a>
   <a href="#temoignages" onclick="toggleMenu()">Témoignages</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#contact" onclick="toggleMenu()" style="color:var(--blue);font-weight:700">→ Nous contacter</a>
 </div>
 
@@ -1210,7 +1260,7 @@ footer {
 <section class="hero" style="padding-top:140px">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag">🇧🇯 Entreprise béninoise de référence</div>
+      <div class="hero-tag">🇧🇯 Entreprise béninoise</div>
       <h1>Nous avons le secret de la <span class="blue">réussite technologique</span></h1>
       <p class="hero-sub">SR Technologie accompagne entreprises, institutions et particuliers dans leur transformation numérique avec des solutions fiables, innovantes et adaptées à leurs besoins.</p>
       <div class="hero-btns">
@@ -1220,7 +1270,7 @@ footer {
       <div class="hero-stats">
         <div class="hstat">
           <span class="hstat-val">92%</span>
-          <span class="hstat-lbl">stagiaires employés en 3 mois</span>
+          <span class="hstat-lbl">stagiaires employés en 3 mois*</span>
         </div>
         <div class="hstat">
           <span class="hstat-val">100%</span>
@@ -1231,6 +1281,7 @@ footer {
           <span class="hstat-lbl">domaines d'expertise</span>
         </div>
       </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;">*Sur nos apprenants formés et suivis depuis la création de SR Technologie</p>
     </div>
     <div class="hero-visual">
       <div class="floating-badge fb1">
@@ -1578,6 +1629,64 @@ footer {
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq" style="background:var(--off)">
+  <div class="section-inner">
+    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto 48px">
+      <div class="section-tag" style="justify-content:center">Questions fréquentes</div>
+      <h2>Vous avez des questions ?</h2>
+      <p class="section-desc" style="margin:0 auto">Voici les réponses aux questions les plus posées par nos futurs apprenants et clients.</p>
+    </div>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quels sont les prérequis pour s'inscrire à une formation ?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Les prérequis varient selon la formation. Une évaluation gratuite est incluse dans les frais d'inscription (10 000 FCFA) pour vérifier votre niveau avant le démarrage. Contactez-nous pour savoir si votre profil correspond à la formation souhaitée.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Les formations sont-elles disponibles en présentiel ou à distance ?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Nos formations se déroulent principalement en présentiel dans nos locaux à Cotonou. Mais elles sont aussi disponible en virtuel. Le format présentiel garantit la partie pratique qui représente 100% de notre pédagogie.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Le stage en entreprise est-il vraiment garanti ?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Oui. SR Technologie dispose d'un réseau d'entreprises partenaires. À l'issue de la formation, nous vous accompagnons dans le placement en stage selon votre formation et votre profil.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Puis-je payer la formation en plusieurs fois ?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Des arrangements de paiement sont possibles selon les cas. Contactez-nous directement par WhatsApp ou téléphone pour en discuter avant votre inscription.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quel délai pour obtenir un devis pour une installation ?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          Nous vous répondons sous 24h après réception de votre demande. Un diagnostic gratuit est effectué avant toute proposition technique chiffrée.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -1587,6 +1696,13 @@ footer {
         <h2>Parlons de votre projet</h2>
         <p>Que ce soit pour une installation réseau, du développement web, une formation ou une maintenance — notre équipe est disponible pour vous accompagner.</p>
         <div class="contact-items">
+          <div class="citem">
+            <div class="citem-icon">🕐</div>
+            <div class="citem-content">
+              <div class="citem-label">Horaires d'ouverture</div>
+              <div class="citem-val">Lundi – Samedi : 8h00 – 18h00</div>
+            </div>
+          </div>
           <div class="citem">
             <div class="citem-icon">📍</div>
             <div class="citem-content">
@@ -1599,8 +1715,8 @@ footer {
             <div class="citem-content">
               <div class="citem-label">Téléphone / WhatsApp</div>
               <div class="citem-val">
-                <a href="tel:+22901405272 63">+229 01 40 52 72 63</a><br>
-                <a href="tel:+22901478811 73">+229 01 47 88 11 73</a>
+                <a href="tel:+2290140527263">+229 01 40 52 72 63</a><br>
+                <a href="tel:+2290147881173">+229 01 47 88 11 73</a>
               </div>
             </div>
           </div>
@@ -1613,7 +1729,7 @@ footer {
           </div>
         </div>
         <div class="social-links">
-          <a href="https://www.facebook.com/share/182gRmL6pa/" target="_blank" class="social-btn">📘 Facebook</a>
+          <a href="https://www.facebook.com/share/1DLiqKiyMh/" target="_blank" class="social-btn">📘 Facebook</a>
           <a href="https://wa.me/2290140527263" target="_blank" class="social-btn">💬 WhatsApp</a>
         </div>
       </div>
@@ -1711,6 +1827,20 @@ footer {
 <a href="https://wa.me/2290140527263?text=Bonjour%20SR%20Technologie%2C%20je%20voudrais%20plus%20d%27informations." class="whatsapp-float" target="_blank" title="Contactez-nous sur WhatsApp">💬</a>
 
 <script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+  
 // Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
