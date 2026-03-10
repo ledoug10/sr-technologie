@@ -2033,37 +2033,36 @@ async function submitPopup() {
   const phone = document.getElementById('popupPhone').value.trim();
   if (!email) { alert('Veuillez entrer votre email.'); return; }
 
-  try {
-    // Formspree
-    await fetch('https://formspree.io/f/xlgpjnyw', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        prenom: name || 'Non renseigné',
-        email: email,
-        whatsapp: phone || 'Non renseigné',
-        source: 'Popup Newsletter'
-      })
-    });
-    // Make → Brevo (envoi automatique)
-    await fetch('https://hook.eu1.make.com/makdge2uwtavnx1gs6ftk4z6gp1gyqze', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prenom: name || '',
-        email: email,
-        whatsapp: phone || '',
-        source: 'Popup Newsletter'
-      })
-    });
-  } catch(e) { console.log('Erreur envoi:', e); }
-
+  // Fermer immédiatement sans attendre les envois
   closePopup();
   const toast = document.createElement('div');
   toast.style.cssText = 'position:fixed;bottom:100px;right:24px;background:#00b887;color:#fff;padding:14px 20px;border-radius:12px;font-weight:600;font-size:14px;z-index:998;box-shadow:0 8px 24px rgba(0,0,0,.2)';
   toast.textContent = '✅ Merci ' + (name || '') + ' ! Bienvenue dans notre communauté.';
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 4000);
+
+  // Envoyer en arrière-plan (sans bloquer l'interface)
+  fetch('https://formspree.io/f/xlgpjnyw', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      prenom: name || 'Non renseigné',
+      email: email,
+      whatsapp: phone || 'Non renseigné',
+      source: 'Popup Newsletter'
+    })
+  }).catch(e => console.log('Erreur Formspree:', e));
+
+  fetch('https://hook.eu1.make.com/makdge2uwtavnx1gs6ftk4z6gp1gyqze', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      prenom: name || '',
+      email: email,
+      whatsapp: phone || '',
+      source: 'Popup Newsletter'
+    })
+  }).catch(e => console.log('Erreur Make:', e));
 }
 // Form submit avec Formspree
 async function submitForm() {
