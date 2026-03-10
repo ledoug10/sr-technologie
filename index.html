@@ -2048,7 +2048,7 @@ async function submitPopup() {
     body: JSON.stringify({
       prenom: name || 'Non renseigné',
       email: email,
-      whatsapp: phone || 'Non renseigné',
+      whatsapp: phone ? phone.replace(/\s/g, '') : '',
       source: 'Popup Newsletter'
     })
   }).catch(e => console.log('Erreur Formspree:', e));
@@ -2059,7 +2059,7 @@ async function submitPopup() {
     body: JSON.stringify({
       prenom: name || '',
       email: email,
-      whatsapp: phone || '',
+      whatsapp: phone ? phone.replace(/\s/g, '') : '',
       source: 'Popup Newsletter'
     })
   }).catch(e => console.log('Erreur Make:', e));
