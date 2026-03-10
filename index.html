@@ -1988,10 +1988,21 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
 
-function submitNewsletter() {
+async function submitNewsletter() {
   const email = document.getElementById('nlEmail').value.trim();
   if (!email) { alert('Veuillez entrer votre email.'); return; }
-  console.log('NEWSLETTER:', email);
+
+  try {
+    await fetch('https://formspree.io/f/xlgpjnyw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        source: 'Section Newsletter'
+      })
+    });
+  } catch(e) { console.log('Erreur:', e); }
+
   document.getElementById('nlSuccess').classList.add('show');
   document.getElementById('nlEmail').value = '';
   document.querySelector('.btn-newsletter').textContent = '✅ Abonné !';
@@ -2014,12 +2025,26 @@ document.getElementById('popupOverlay').addEventListener('click', function(e) {
   if (e.target === this) closePopup();
 });
 
-function submitPopup() {
+async function submitPopup() {
   const name = document.getElementById('popupName').value.trim();
   const email = document.getElementById('popupEmail').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
   if (!email) { alert('Veuillez entrer votre email.'); return; }
-  console.log('POPUP LEAD:', { name, email, phone });
+
+  // Envoyer vers Formspree
+  try {
+    await fetch('https://formspree.io/f/xlgpjnyw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        prenom: name || 'Non renseigné',
+        email: email,
+        whatsapp: phone || 'Non renseigné',
+        source: 'Popup Newsletter'
+      })
+    });
+  } catch(e) { console.log('Erreur envoi:', e); }
+
   closePopup();
   const toast = document.createElement('div');
   toast.style.cssText = 'position:fixed;bottom:100px;right:24px;background:#00b887;color:#fff;padding:14px 20px;border-radius:12px;font-weight:600;font-size:14px;z-index:998;box-shadow:0 8px 24px rgba(0,0,0,.2)';
@@ -2027,7 +2052,6 @@ function submitPopup() {
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 4000);
 }
-
 // Form submit avec Formspree
 async function submitForm() {
   const nom = document.getElementById('fNom').value.trim();
