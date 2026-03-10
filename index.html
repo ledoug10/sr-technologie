@@ -1996,10 +1996,12 @@ async function submitNewsletter() {
     await fetch('https://formspree.io/f/xlgpjnyw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        email: email,
-        source: 'Section Newsletter'
-      })
+      body: JSON.stringify({ email: email, source: 'Section Newsletter' })
+    });
+    await fetch('https://hook.eu1.make.com/makdge2uwtavnx1gs6ftk4z6gp1gyqze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prenom: '', email: email, whatsapp: '', source: 'Section Newsletter' })
     });
   } catch(e) { console.log('Erreur:', e); }
 
@@ -2014,7 +2016,7 @@ setTimeout(() => {
     document.getElementById('popupOverlay').classList.add('open');
     popupShown = true;
   }
-}, 30000);
+}, 3000);
 
 function closePopup() {
   document.getElementById('popupOverlay').classList.remove('open');
@@ -2031,8 +2033,8 @@ async function submitPopup() {
   const phone = document.getElementById('popupPhone').value.trim();
   if (!email) { alert('Veuillez entrer votre email.'); return; }
 
-  // Envoyer vers Formspree
   try {
+    // Formspree
     await fetch('https://formspree.io/f/xlgpjnyw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2043,18 +2045,19 @@ async function submitPopup() {
         source: 'Popup Newsletter'
       })
     });
+    // Make → Brevo (envoi automatique)
+    await fetch('https://hook.eu1.make.com/makdge2uwtavnx1gs6ftk4z6gp1gyqze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prenom: name || '',
+        email: email,
+        whatsapp: phone || '',
+        source: 'Popup Newsletter'
+      })
+    });
   } catch(e) { console.log('Erreur envoi:', e); }
-// Envoyer vers Make (pour Brevo)
-await fetch('https://hook.eu1.make.com/makdge2uwtavnx1gs6ftk4z6gp1gyqze', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    prenom: name || '',
-    email: email,
-    whatsapp: phone || '',
-    source: 'Popup Newsletter'
-  })
-});
+
   closePopup();
   const toast = document.createElement('div');
   toast.style.cssText = 'position:fixed;bottom:100px;right:24px;background:#00b887;color:#fff;padding:14px 20px;border-radius:12px;font-weight:600;font-size:14px;z-index:998;box-shadow:0 8px 24px rgba(0,0,0,.2)';
