@@ -1210,15 +1210,80 @@ footer {
 .faq-answer.open { max-height:200px; padding:0 22px 18px; }
   
 /* Animations on scroll */
-.fade-up {
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-.fade-up.visible {
-  opacity:1;
-  transform:translateY(0);
-}
+.fade-up { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+.fade-left { opacity:0; transform:translateX(-30px); transition:opacity .7s ease, transform .7s ease; }
+.fade-left.visible { opacity:1; transform:translateX(0); }
+.fade-right { opacity:0; transform:translateX(30px); transition:opacity .7s ease, transform .7s ease; }
+.fade-right.visible { opacity:1; transform:translateX(0); }
+.fade-up:nth-child(2){transition-delay:.1s}.fade-up:nth-child(3){transition-delay:.2s}.fade-up:nth-child(4){transition-delay:.3s}
+
+.quisommes{background:linear-gradient(160deg,#f0f6ff 0%,#ffffff 100%)}
+.quisommes-top{text-align:center;max-width:680px;margin:0 auto 64px}
+.quisommes-top h2{margin-bottom:16px}
+.quisommes-top p{font-size:16px;color:var(--muted);line-height:1.8}
+.valeurs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+@media(max-width:768px){.valeurs-grid{grid-template-columns:1fr}}
+.valeur-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px 28px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.valeur-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-mid));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.valeur-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(10,102,194,.1)}
+.valeur-card:hover::before{transform:scaleX(1)}
+.valeur-emoji{font-size:40px;display:block;margin-bottom:16px}
+.valeur-card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.valeur-card p{font-size:14px;color:var(--muted);line-height:1.65}
+.quisommes-bottom{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.quisommes-bottom{grid-template-columns:1fr}}
+.quisommes-mv{display:flex;flex-direction:column;gap:20px}
+.mv-big-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;gap:18px;align-items:flex-start;transition:all .3s}
+.mv-big-card:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(10,102,194,.08)}
+.mv-big-icon{width:52px;height:52px;background:var(--blue-light);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.mv-big-content h3{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--blue)}
+.mv-big-content p{font-size:14px;color:var(--muted);line-height:1.65}
+.quisommes-process{background:linear-gradient(135deg,var(--blue),var(--blue-dark));border-radius:24px;padding:36px;color:#fff;position:relative;overflow:hidden}
+.quisommes-process::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%}
+.quisommes-process h3{font-size:20px;font-weight:700;margin-bottom:24px}
+.process-list{display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
+.process-item{display:flex;gap:16px;align-items:flex-start}
+.process-num{width:34px;height:34px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.process-text strong{display:block;font-size:14px;font-weight:700;margin-bottom:2px}
+.process-text span{font-size:13px;opacity:.75;line-height:1.4}
+
+#newsletter{background:var(--text);padding:80px 24px;position:relative;overflow:hidden}
+#newsletter::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(10,102,194,.3) 0%,transparent 60%);pointer-events:none}
+#newsletter::after{content:'';position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,92,53,.2) 0%,transparent 60%);pointer-events:none}
+.newsletter-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.newsletter-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(10,102,194,.3);color:#7bb8f5;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(10,102,194,.3)}
+.newsletter-inner h2{color:#fff;font-size:clamp(24px,3.5vw,38px);margin-bottom:14px}
+.newsletter-inner h2 span{color:#7bb8f5}
+.newsletter-inner p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.7;margin-bottom:36px}
+.newsletter-form{display:flex;gap:12px;max-width:500px;margin:0 auto 16px}
+@media(max-width:540px){.newsletter-form{flex-direction:column}}
+.newsletter-input{flex:1;padding:14px 20px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;color:#fff;font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .25s}
+.newsletter-input::placeholder{color:rgba(255,255,255,.4)}
+.newsletter-input:focus{border-color:rgba(10,102,194,.6)}
+.btn-newsletter{padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;white-space:nowrap}
+.btn-newsletter:hover{background:#1a7fd4;transform:translateY(-2px)}
+.newsletter-privacy{font-size:12px;color:rgba(255,255,255,.35)}
+.newsletter-success{display:none;align-items:center;justify-content:center;gap:8px;color:#7ee8c5;font-weight:600;font-size:15px;margin-top:16px}
+.newsletter-success.show{display:flex}
+
+.popup-overlay{position:fixed;inset:0;background:rgba(18,25,44,.75);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s ease;backdrop-filter:blur(4px)}
+.popup-overlay.open{opacity:1;pointer-events:all}
+.popup-box{background:#fff;border-radius:24px;padding:44px 40px;max-width:480px;width:100%;position:relative;transform:scale(0.9) translateY(20px);transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 24px 80px rgba(0,0,0,.3)}
+.popup-overlay.open .popup-box{transform:scale(1) translateY(0)}
+.popup-close{position:absolute;top:16px;right:16px;width:32px;height:32px;background:var(--off);border:none;border-radius:8px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.popup-close:hover{background:var(--border)}
+.popup-emoji{font-size:44px;display:block;margin-bottom:16px;text-align:center}
+.popup-box h3{font-size:24px;font-weight:800;text-align:center;margin-bottom:8px}
+.popup-box h3 span{color:var(--blue)}
+.popup-box p{font-size:14px;color:var(--muted);text-align:center;line-height:1.6;margin-bottom:24px}
+.popup-form{display:flex;flex-direction:column;gap:12px}
+.popup-input{padding:13px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .25s}
+.popup-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(10,102,194,.1)}
+.btn-popup{padding:14px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 4px 16px rgba(10,102,194,.3)}
+.btn-popup:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.popup-skip{text-align:center;font-size:12px;color:var(--muted);cursor:pointer;margin-top:4px;transition:color .2s}
+.popup-skip:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -1358,54 +1423,82 @@ footer {
   </div>
 </section>
 
-<!-- À PROPOS -->
-<section id="apropos">
+<!-- QUI SOMMES-NOUS -->
+<section id="apropos" class="quisommes">
   <div class="section-inner">
-    <div class="apropos-grid">
-      <div class="apropos-visual fade-up">
-        <div class="apropos-img-wrap">
-          <img src="images/sr_objectif.jpeg" alt="Objectifs de SR Technologie" style="width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:24px;display:block;">
-          <div class="apropos-quote">"Un bon partenaire ne se limite pas à intervenir — il s'engage à comprendre vos défis et proposer des solutions durables."</div>
-          <div class="apropos-stat-row">
-            <div class="astat">
-              <span class="astat-val">92%</span>
-              <span class="astat-lbl">Taux d'insertion professionnelle</span>
-            </div>
-            <div class="astat">
-              <span class="astat-val">100%</span>
-              <span class="astat-lbl">Formation pratique</span>
-            </div>
-            <div class="astat">
-              <span class="astat-val">5</span>
-              <span class="astat-lbl">Domaines de compétences</span>
-            </div>
-            <div class="astat">
-              <span class="astat-val">🏅</span>
-              <span class="astat-lbl">Certificat de fin de formation</span>
-            </div>
+    <div class="quisommes-top fade-up">
+      <div class="section-tag">Qui sommes-nous</div>
+      <h2>Votre partenaire tech de référence<br>en Afrique de l'Ouest</h2>
+      <p>Né en 2024 de la vision de deux jeunes ingénieurs en génie électrique, SR Technologie est aujourd'hui une entreprise béninoise en pleine croissance, spécialisée dans les solutions techniques et numériques. Convaincus que la technologie peut transformer le quotidien des entreprises et des particuliers en Afrique, nos fondateurs ont bâti une structure capable de répondre aux défis concrets du terrain — avec rigueur, innovation et proximité.</p>
+      <p style="margin-top:14px">Basés à Cotonou, nous accompagnons entreprises, institutions et particuliers dans leur transformation numérique et technologique, avec des solutions fiables, accessibles et durables. De la formation certifiante à l'installation de réseaux, en passant par le développement web et la maintenance informatique, SR Technologie est le partenaire qu'il vous faut pour réussir votre transition vers le numérique.</p>
+    </div>
+    <div class="valeurs-grid">
+      <div class="valeur-card fade-up">
+        <span class="valeur-emoji">🎯</span>
+        <h3>Notre Mission</h3>
+        <p>Fournir des services techniques de qualité, accessibles et durables pour répondre aux enjeux des professionnels dans un environnement technologique en constante évolution.</p>
+      </div>
+      <div class="valeur-card fade-up">
+        <span class="valeur-emoji">🚀</span>
+        <h3>Notre Vision</h3>
+        <p>Devenir le partenaire de référence en solutions techniques et numériques en Afrique de l'Ouest, en accompagnant chaque client vers l'excellence technologique.</p>
+      </div>
+      <div class="valeur-card fade-up">
+        <span class="valeur-emoji">💡</span>
+        <h3>Nos Valeurs</h3>
+        <p>Excellence, innovation, accessibilité et engagement. La technologie doit être un levier de développement concret pour chaque organisation béninoise.</p>
+      </div>
+    </div>
+    <div class="quisommes-bottom">
+      <div class="quisommes-mv fade-left">
+        <div class="mv-big-card">
+          <div class="mv-big-icon">⚡</div>
+          <div class="mv-big-content">
+            <h3>Génie Électrique & Automatisme</h3>
+            <p>Installations industrielles, électricité bâtiment, systèmes automatisés — ingénieurs certifiés.</p>
+          </div>
+        </div>
+        <div class="mv-big-card">
+          <div class="mv-big-icon">🌐</div>
+          <div class="mv-big-content">
+            <h3>Réseaux & Télécommunications</h3>
+            <p>Fibre optique, Wi-Fi, vidéosurveillance et téléphonie IP pour entreprises et institutions.</p>
+          </div>
+        </div>
+        <div class="mv-big-card">
+          <div class="mv-big-icon">💻</div>
+          <div class="mv-big-content">
+            <h3>Développement & Numérique</h3>
+            <p>Sites web, applications mobiles, digitalisation — vos idées en solutions performantes.</p>
+          </div>
+        </div>
+        <div class="mv-big-card">
+          <div class="mv-big-icon">🎓</div>
+          <div class="mv-big-content">
+            <h3>Formations Certifiantes</h3>
+            <p>100% pratique, stage garanti, certificat reconnu par l'État — 92% employés en 3 mois.</p>
           </div>
         </div>
       </div>
-      <div class="apropos-content fade-up">
-        <div class="section-tag">Qui sommes-nous</div>
-        <h2>Votre partenaire tech de référence en Afrique de l'Ouest</h2>
-        <p>SR Technologie est une entreprise béninoise de prestation de services techniques et numériques, basée à Cotonou. Nous accompagnons les entreprises, institutions et particuliers dans leurs besoins en solutions fiables, innovantes et adaptées.</p>
-        <div class="mission-vision">
-          <div class="mv-card">
-            <div class="mv-label">🎯 Notre mission</div>
-            <p>Fournir des services techniques de qualité, accessibles et durables pour répondre aux enjeux des professionnels dans un monde tech en constante évolution.</p>
+      <div class="quisommes-process fade-right">
+        <h3>🔄 Notre processus d'intervention</h3>
+        <div class="process-list">
+          <div class="process-item">
+            <div class="process-num">1</div>
+            <div class="process-text"><strong>Diagnostic gratuit</strong><span>Analyse de vos besoins réels avant toute proposition.</span></div>
           </div>
-          <div class="mv-card">
-            <div class="mv-label">🚀 Notre vision</div>
-            <p>Devenir le partenaire de référence en solutions techniques et numériques en Afrique de l'Ouest.</p>
+          <div class="process-item">
+            <div class="process-num">2</div>
+            <div class="process-text"><strong>Proposition technique chiffrée</strong><span>Devis clair et adapté à votre budget.</span></div>
           </div>
-        </div>
-        <div class="process-steps">
-          <div style="font-weight:700;font-size:15px;margin-bottom:4px;">Notre processus d'intervention :</div>
-          <div class="pstep"><div class="pstep-num">1</div> Diagnostic gratuit de vos besoins</div>
-          <div class="pstep"><div class="pstep-num">2</div> Proposition technique chiffrée</div>
-          <div class="pstep"><div class="pstep-num">3</div> Mise en œuvre par nos ingénieurs</div>
-          <div class="pstep"><div class="pstep-num">4</div> Suivi post-intervention</div>
+          <div class="process-item">
+            <div class="process-num">3</div>
+            <div class="process-text"><strong>Mise en œuvre par nos ingénieurs</strong><span>Intervention par des experts certifiés.</span></div>
+          </div>
+          <div class="process-item">
+            <div class="process-num">4</div>
+            <div class="process-text"><strong>Suivi post-intervention</strong><span>Nous restons à vos côtés après la livraison.</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1781,6 +1874,38 @@ footer {
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-badge">📧 Newsletter SR Technologie</div>
+    <h2>Restez à la pointe de la <span>tech au Bénin</span></h2>
+    <p>Recevez en avant-première nos nouvelles formations, conseils tech exclusifs et offres spéciales directement dans votre boîte mail.</p>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" id="nlEmail" placeholder="Votre adresse email">
+      <button class="btn-newsletter" onclick="submitNewsletter()">S'abonner →</button>
+    </div>
+    <div class="newsletter-privacy">🔒 Pas de spam · Désinscription en 1 clic · 100% gratuit</div>
+    <div class="newsletter-success" id="nlSuccess">✅ Merci ! Vous recevrez bientôt nos actualités tech.</div>
+  </div>
+</section>
+
+<!-- POPUP NEWSLETTER -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <span class="popup-emoji">🎁</span>
+    <h3>Rejoignez la communauté <span>SR Technologie</span></h3>
+    <p>Soyez le premier informé de nos nouvelles formations, événements et conseils tech exclusifs.</p>
+    <div class="popup-form">
+      <input class="popup-input" type="text" id="popupName" placeholder="👤 Votre prénom">
+      <input class="popup-input" type="email" id="popupEmail" placeholder="📧 Votre email">
+      <input class="popup-input" type="tel" id="popupPhone" placeholder="📱 WhatsApp (+229...)">
+      <button class="btn-popup" onclick="submitPopup()">Rejoindre la communauté →</button>
+      <div class="popup-skip" onclick="closePopup()">Non merci, je n'ai pas besoin d'être informé</div>
+    </div>
+  </div>
+</div>
+  
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -1861,7 +1986,47 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+function submitNewsletter() {
+  const email = document.getElementById('nlEmail').value.trim();
+  if (!email) { alert('Veuillez entrer votre email.'); return; }
+  console.log('NEWSLETTER:', email);
+  document.getElementById('nlSuccess').classList.add('show');
+  document.getElementById('nlEmail').value = '';
+  document.querySelector('.btn-newsletter').textContent = '✅ Abonné !';
+}
+
+let popupShown = false;
+setTimeout(() => {
+  if (!popupShown && !sessionStorage.getItem('popupClosed')) {
+    document.getElementById('popupOverlay').classList.add('open');
+    popupShown = true;
+  }
+}, 30000);
+
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('open');
+  sessionStorage.setItem('popupClosed', '1');
+}
+
+document.getElementById('popupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+
+function submitPopup() {
+  const name = document.getElementById('popupName').value.trim();
+  const email = document.getElementById('popupEmail').value.trim();
+  const phone = document.getElementById('popupPhone').value.trim();
+  if (!email) { alert('Veuillez entrer votre email.'); return; }
+  console.log('POPUP LEAD:', { name, email, phone });
+  closePopup();
+  const toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;bottom:100px;right:24px;background:#00b887;color:#fff;padding:14px 20px;border-radius:12px;font-weight:600;font-size:14px;z-index:998;box-shadow:0 8px 24px rgba(0,0,0,.2)';
+  toast.textContent = '✅ Merci ' + (name || '') + ' ! Bienvenue dans notre communauté.';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
 
 // Form submit avec Formspree
 async function submitForm() {
